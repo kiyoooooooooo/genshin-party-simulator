@@ -1,0 +1,178 @@
+/* 全体的なスタイル */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+main {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* パーティ編成セクション */
+#party-section {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#party-slots {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* 小さい画面で折り返す */
+}
+
+.party-slot {
+    width: 200px; /* スロットの幅を固定 */
+    height: auto; /* 高さを自動調整 */
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* 上寄せ */
+    padding: 10px;
+    box-sizing: border-box; /* paddingを幅に含める */
+    background-color: #f9f9f9;
+}
+
+.character-display {
+    width: 100%; /* キャラクター表示部分の幅 */
+    min-height: 120px; /* キャラクターアイコンの最低高さを確保 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.party-character-icon {
+    width: 100px; /* パーティアイコンのサイズ */
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #66bb6a;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.party-character-icon:hover {
+    transform: scale(1.05);
+}
+
+.equipment-selection {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.weapon-slot, .artifact-slots {
+    width: 100%;
+}
+
+.weapon-select, .artifact-set-select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 0.9em;
+}
+
+#clear-party {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+
+#clear-party:hover {
+    background-color: #d32f2f;
+}
+
+/* キャラクター選択セクション */
+#character-selection-section {
+    flex: 2;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#search-bar, #element-filter, #weapon-filter {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+#character-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 15px;
+    justify-items: center;
+}
+
+.character-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.character-icon:hover {
+    transform: scale(1.1);
+    border-color: #4CAF50;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+    }
+
+    #party-slots {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .party-slot {
+        width: 80%; /* スマホ表示で幅を広げる */
+    }
+
+    #filters {
+        flex-direction: column;
+    }
+}
