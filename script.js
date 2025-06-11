@@ -105,9 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'rosaria', name: 'ロサリア', element: '氷', weapon: '長柄武器', rarity: 4, imageUrl: 'https://enka.network/ui/UI_AvatarIcon_Rosaria.png' },
         { id: 'eula', name: 'エウルア', element: '氷', weapon: '両手剣', rarity: 5, imageUrl: 'https://enka.network/ui/UI_AvatarIcon_Eula.png' },
         { id: 'freminet', name: 'フレミネ', element: '氷', weapon: '両手剣', rarity: 4, imageUrl: 'https://enka.network/ui/UI_AvatarIcon_Freminet.png' },
-        { id: 'escoffier', name: 'スコフィエ', element: '氷', weapon: '長柄武器', rarity: 4, imageUrl: 'https://static.wikia.nocookie.net/gensin-impact/images/2/2a/Escoffier_Icon.png/revision/latest?cb=20250507052556' },
-        { id: 'Citlali', name: 'シトラリ', element: '氷', weapon: '法器', rarity: 4, imageUrl: 'https://static.wikia.nocookie.net/gensin-impact/images/d/dd/Citlali_Icon.png/revision/latest?cb=20241130080542' },
-        { id: 'charlotte', name: 'シャルロット', element: '氷', weapon: '法器', rarity: 4, imageUrl: 'https://static.wikia.nocookie.net/gensin-impact/images/d/d2/Charlotte_Icon.png/revision/latest?cb=20231108030544' },
+        { id: 'escoffier', name: 'スコフィエ', element: '氷', weapon: '長柄武器', rarity: 4, imageUrl: 'https://cdn.discordapp.com/attachments/1377999535644737537/1382205783126704178/latest.png?ex=684a4ef2&is=6848fd72&hm=f13b9aa9a79b0a0f25bc88373656089df89f083027ad011d77b7c4c5975a33a1&' },
+        { id: 'Citlali', name: 'シトラリ', element: '氷', weapon: '法器', rarity: 4, imageUrl: 'https://cdn.discordapp.com/attachments/1377999535644737537/1382205453676576859/250.png?ex=684a4ea4&is=6848fd24&hm=1fa6a8e5abc4c7bf2d0199c67ad7c88c9c22f67ecab85ad8fa0a2b844313a821&' },
+        { id: 'charlotte', name: 'シャルロット', element: '氷', weapon: '法器', rarity: 4, imageUrl: 'https://cdn.discordapp.com/attachments/1377999535644737537/1382205182896767097/250.png?ex=684a4e63&is=6848fce3&hm=8ed7c079bd4714f1be9f4b6d237d2e25729550ba679dc97bcbacc7c5aae3cca1&' },
         { id: 'mika', name: 'ミカ', element: '氷', weapon: '長柄武器', rarity: 4, imageUrl: 'https://enka.network/ui/UI_AvatarIcon_Mika.png' },
         { id: 'skirk', name: 'スカーク', element: '氷', weapon: '片手剣', rarity: 5, imageUrl: 'https://cdn.discordapp.com/attachments/978269118119673896/1381943571824902155/UI_AvatarIcon_SkirkNew.png?ex=68495abe&is=6848093e&hm=4261551f0b216f7189e6bc65530b7984c6feb52ef7df6f81a5b99111b02ff49b&' },
     ];
@@ -116,14 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const dendroCharacters = [
         { id: 'nahida', name: 'ナヒーダ', element: '草', weapon: '法器', rarity: 5, imageUrl: 'https://enka.network/ui/UI_AvatarIcon_Nahida.png' },
         { id: 'alhaitham', name: 'アルハイゼン', element: '草', weapon: '片手剣', rarity: 5, imageUrl: 'https://cdn.discordapp.com/attachments/1377999535644737537/1382202113039532052/250.png?ex=684a4b87&is=6848fa07&hm=14f2b9ddca169f6f1ab550b20bb81dab497f2e25e809ab75d1ef77db48a16846&' },
-        { id: 'baizhu', name: '白朮', element: '草', weapon: '法器', rarity: 5, imageUrl: 'https://static.wikia.nocookie.net/gensin-impact/images/c/cb/Baizhu_Icon.png/revision/latest?cb=20231215091730' },
-        { id: 'kirara', name: '綺良々', element: '草', weapon: '片手剣', rarity: 4, imageUrl: 'https://static.wikia.nocookie.net/gensin-impact/images/b/b6/Kirara_Icon.png/revision/latest?cb=20230718042457' },
+        { id: 'baizhu', name: '白朮', element: '草', weapon: '法器', rarity: 5, imageUrl: 'https://cdn.discordapp.com/attachments/1377999535644737537/1382202429067497595/250.png?ex=684a4bd3&is=6848fa53&hm=59ca69b65de323613d4eb15777cbf16e86d60142de0d7f9cae239c33435b3414&' },
+        { id: 'kirara', name: '綺良々', element: '草', weapon: '片手剣', rarity: 4, imageUrl: 'https://cdn.discordapp.com/attachments/1377999535644737537/1382202620139143238/250.png?ex=684a4c00&is=6848fa80&hm=eb7069fc9022150d2899c5adeeebbd1b42539a7ab28b0cec092202bbae3882e5&' },
         { id: 'collei', name: 'コレイ', element: '草', weapon: '弓', rarity: 4, imageUrl: 'https://enka.network/ui/UI_AvatarIcon_Collei.png' },
         { id: 'yaoyao', name: 'ヨォーヨ', element: '草', weapon: '長柄武器', rarity: 4, imageUrl: 'https://enka.network/ui/UI_AvatarIcon_Yaoyao.png' },
         { id: 'kaveh', name: 'カーヴェ', element: '草', weapon: '両手剣', rarity: 4, imageUrl: 'https://enka.network/ui/UI_AvatarIcon_Kaveh.png' },
         { id: 'emilie', name: 'エミリエ', element: '草', weapon: '長柄武器', rarity: 4, imageUrl: 'https://enka.network/ui/UI_AvatarIcon_Emilie.png' },
         { id: 'tighnari', name: 'ティナリ', element: '草', weapon: '弓', rarity: 5, imageUrl: 'https://enka.network/ui/UI_AvatarIcon_Tighnari.png' },
-        { id: 'kinich', name: 'キィニチ', element: '草', weapon: '両手剣', rarity: 4, imageUrl: 'https://static.wikia.nocookie.net/gensin-impact/images/9/9a/Kinich_Icon.png/revision/latest?cb=20240917123836' },
+        { id: 'kinich', name: 'キィニチ', element: '草', weapon: '両手剣', rarity: 4, imageUrl: 'https://cdn.discordapp.com/attachments/1377999535644737537/1382202836997242950/250.png?ex=684a4c34&is=6848fab4&hm=60a157cc709e8a683178985af7c378e1e46b3585d7434d93f76448f0b0934ebb&' },
     ];
 
     const travelerCharacter = [
