@@ -206,21 +206,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchBar = document.getElementById('search-bar');
     const elementFilter = document.getElementById('element-filter');
     const weaponFilter = document.getElementById('weapon-filter');
+    const addForm = document.getElementById('add-character-form');
+    const imageUploader = document.getElementById('imageUploader');
+    const uploadButton = document.getElementById('uploadButton');
+    const uploadStatus = document.getElementById('uploadStatus');
+    const hiddenImageUrl = document.getElementById('char-image-url');
 
     let currentParty = [];
 
-    // --- 初期化 ---
+    // --- 初期化処理 ---
     async function initializeApp() {
-        // サーバーからデータを取得
         const serverCharacters = await fetchCharacters();
-        // script.js内のデータとサーバーのデータを合体させる
         const serverCharIds = new Set(serverCharacters.map(c => c.id));
-        const combined = [
+        allCharacters = [
             ...serverCharacters,
             ...hardcodedCharacters.filter(c => !serverCharIds.has(c.id))
         ];
-        allCharacters = combined;
-
         renderCharacters();
         loadParty();
     }
@@ -243,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await fetch(`/api/characters/${id}`, { method: 'DELETE' });
                 if (response.ok) {
                     alert('キャラクターを削除しました。');
-                    await initializeApp(); // データを再取得して画面を更新
+                    await initializeApp();
                 } else {
                     throw new Error('削除に失敗しました。');
                 }
@@ -278,16 +279,180 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(img);
             // サーバーから取得したデータ（＝IDが数字）の場合のみ削除ボタンを表示
             if (!isNaN(parseInt(char.id, 10))) {
-                 container.appendChild(deleteButton);
+                container.appendChild(deleteButton);
             }
             characterListDiv.appendChild(container);
         });
     }
 
-    // --- フィルターとパーティ関連の関数（変更なし） ---
-    // (filterCharacters, addCharacterToParty, removeCharacterFromParty, etc.)
-    // ... ここに以前のコードからフィルタとパーティ関連の関数をすべてコピー＆ペースト ...
+    // --- イベントリスナー ---
+    uploadButton.addEventListener('click', async () => {
+        const file = imageUploader.files[0];
+        if (!file) { uploadStatus.textContent = 'ファイルが選択されていません。'; return; }
+        const formData = new FormData();
+        formData.append('imageFile', file);
+        try {
+            uploadStatus.textContent = 'アップロード中...';
+            const response = await fetch('/upload', { method: 'POST', body: formData });
+            const result = await response.json();
+            if (response.ok) {
+                uploadStatus.textContent = 'アップロード成功！';
+                hiddenImageUrl.value = result.filePath;
+            } else { throw new Error(result.error); }
+        } catch (error) {
+            uploadStatus.textContent = `エラー: ${error.message}`;
+        }
+    });
 
-    // --- アプリケーション起動 ---
+    addForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const newCharacterData = {
+            name: document.getElementById('char-name').value,
+            element: document.getElementById('char-element').value,
+            weapon: document.getElementById('char-weapon').value,
+            rarity: document.getElementById('char-rarity').value,
+            imageUrl: hiddenImageUrl.value
+        };
+        if (!newCharacterData.imageUrl) { alert('画像をアップロードしてください。'); return; }
+        try {
+            const response = await fetch('/api/characters', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newCharacterData)
+            });
+            if (response.ok) {
+                alert('キャラクターが追加されました！');
+                addForm.reset();
+                uploadStatus.textContent = '';
+                hiddenImageUrl.value = '';
+                await initializeApp();
+            } else { throw new Error('キャラクターの追加に失敗しました。'); }
+        } catch (error) {
+            alert(error.message);
+        }
+    });
+
+    function filterCharacters() {
+        const searchText = searchBar.value.toLowerCase();
+        const selectedElement = elementFilter.value;
+        const selectedWeapon = weaponFilter.value;
+        const filtered = allCharacters.filter(char => {
+            const matchesSearch = char.name.toLowerCase().includes(searchText);
+            const matchesElement = selectedElement === 'all' || char.element === selectedElement;
+            const matchesWeapon = selectedWeapon === 'all' || char.weapon === selectedWeapon;
+            return matchesSearch && matchesElement && matchesWeapon;
+        });
+        renderCharacters(filtered);
+    }
+    searchBar.addEventListener('input', filterCharacters);
+    elementFilter.addEventListener('change', filterCharacters);
+    weaponFilter.addEventListener('change', filterCharacters);
+
+    clearPartyButton.addEventListener('click', () => {
+        currentParty = [];
+        repopulatePartySlots();
+        saveParty();
+    });
+
+    function addCharacterToParty(char) {
+        if (currentParty.length >= 4 || currentParty.some(pChar => pChar.id === char.id)) return;
+        currentParty.push({ ...char, selectedWeapon: '', selectedArtifacts: ['', ''] });
+        repopulatePartySlots();
+        saveParty();
+    }
+
+    function removeCharacterFromParty(charId) {
+        currentParty = currentParty.filter(pChar => pChar.id !== charId);
+        repopulatePartySlots();
+        saveParty();
+    }
+
+    function repopulatePartySlots() {
+        partySlots.forEach((slot, index) => {
+            const characterDisplay = slot.querySelector('.character-display');
+            const weaponSelect = slot.querySelector('.weapon-select');
+            const artifactSetSelects = slot.querySelectorAll('.artifact-set-select');
+            
+            characterDisplay.innerHTML = '';
+            weaponSelect.innerHTML = '<option value="">武器を選択</option>';
+            artifactSetSelects[0].innerHTML = '<option value="">聖遺物セット1</option>';
+            artifactSetSelects[1].innerHTML = '<option value="">聖遺物セット2</option>';
+            
+            const pChar = currentParty[index];
+            if (pChar) {
+                const img = document.createElement('img');
+                img.src = pChar.imageUrl;
+                img.alt = pChar.name;
+                img.classList.add('party-character-icon');
+                img.addEventListener('click', () => removeCharacterFromParty(pChar.id));
+                characterDisplay.appendChild(img);
+
+                populateWeaponSelect(weaponSelect, pChar.weapon);
+                populateArtifactSetSelects(artifactSetSelects);
+                
+                weaponSelect.value = pChar.selectedWeapon;
+                artifactSetSelects[0].value = pChar.selectedArtifacts[0];
+                artifactSetSelects[1].value = pChar.selectedArtifacts[1];
+
+                const newWeaponSelect = weaponSelect.cloneNode(true);
+                weaponSelect.parentNode.replaceChild(newWeaponSelect, weaponSelect);
+                newWeaponSelect.addEventListener('change', () => updateCharacterEquipment(pChar.id, 'weapon', newWeaponSelect.value));
+
+                const newArtifactSetSelect1 = artifactSetSelects[0].cloneNode(true);
+                artifactSetSelects[0].parentNode.replaceChild(newArtifactSetSelect1, artifactSetSelects[0]);
+                newArtifactSetSelect1.addEventListener('change', () => updateCharacterEquipment(pChar.id, 'artifact1', newArtifactSetSelect1.value));
+
+                const newArtifactSetSelect2 = artifactSetSelects[1].cloneNode(true);
+                artifactSetSelects[1].parentNode.replaceChild(newArtifactSetSelect2, artifactSetSelects[1]);
+                newArtifactSetSelect2.addEventListener('change', () => updateCharacterEquipment(pChar.id, 'artifact2', newArtifactSetSelect2.value));
+            }
+        });
+    }
+
+    function populateWeaponSelect(selectElement, charWeaponType) {
+        if (weapons[charWeaponType]) {
+            weapons[charWeaponType].forEach(weapon => {
+                const option = document.createElement('option');
+                option.value = weapon;
+                option.textContent = weapon;
+                selectElement.appendChild(option);
+            });
+        }
+    }
+
+    function populateArtifactSetSelects(selectElements) {
+        selectElements.forEach((selectElement, index) => {
+            selectElement.innerHTML = `<option value="">聖遺物セット${index + 1}</option>`;
+            artifactSets.forEach(set => {
+                const option = document.createElement('option');
+                option.value = set;
+                option.textContent = set;
+                selectElement.appendChild(option);
+            });
+        });
+    }
+
+    function updateCharacterEquipment(charId, type, value) {
+        const charInParty = currentParty.find(pChar => pChar.id === charId);
+        if (charInParty) {
+            if (type === 'weapon') charInParty.selectedWeapon = value;
+            else if (type === 'artifact1') charInParty.selectedArtifacts[0] = value;
+            else if (type === 'artifact2') charInParty.selectedArtifacts[1] = value;
+            saveParty();
+        }
+    }
+
+    function saveParty() {
+        localStorage.setItem('genshinParty', JSON.stringify(currentParty));
+    }
+
+    function loadParty() {
+        const savedParty = localStorage.getItem('genshinParty');
+        if (savedParty) {
+            currentParty = JSON.parse(savedParty);
+            repopulatePartySlots();
+        }
+    }
+
     initializeApp();
 });
