@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# Node.jsサーバーをバックグラウンドで起動
-cd /app && node server.js &
+# 依存関係をインストール
+npm install
 
-# NGINXをフォアグラウンドで起動
-nginx -g 'daemon off;'
+# Node.jsサーバーを起動
+node server.js

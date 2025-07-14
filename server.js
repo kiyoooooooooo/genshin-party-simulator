@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const path = require('path'); // この行が重要です
+const path = require('path');
 const fs = require('fs');
 
 const app = express();
@@ -17,12 +17,10 @@ const readCharacters = () => {
     const data = fs.readFileSync(DB_PATH, 'utf-8');
     return data ? JSON.parse(data) : [];
 };
-
 const writeCharacters = (data) => {
     fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
 };
 
-// --- API ---
 app.get('/api/characters', (req, res) => {
     res.json(readCharacters());
 });
@@ -45,7 +43,6 @@ app.delete('/api/characters/:id', (req, res) => {
     res.status(200).json({ message: 'キャラクターが削除されました' });
 });
 
-// --- 画像アップロード ---
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'uploads/'),
     filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
@@ -59,7 +56,6 @@ app.post('/upload', upload.single('imageFile'), (req, res) => {
     res.json({ filePath: `/uploads/${req.file.filename}` });
 });
 
-// --- サーバー起動 ---
 app.listen(port, () => {
     console.log(`サーバーがポート${port}で起動しました`);
 });
