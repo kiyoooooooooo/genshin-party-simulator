@@ -1,17 +1,81 @@
 const express = require('express');
-const path = 'path';
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 
 const app = express();
-// Renderが指定するポート、なければローカル用の3000番
 const port = process.env.PORT || 3000;
 
-// 'public'フォルダ（HTML, CSS, JS）をルートとして提供
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-
-// 'uploads'フォルダ内の画像にもアクセスできるように提供
 app.use('/uploads', express.static('uploads'));
 
-// サーバーを起動
+const DB_PATH = './character_db.json';
+
+const readCharacters = () => {
+    if (!fs.existsSync(DB_PATH)) return [];
+    const data = fs.readFileSync(DB_PATH);
+    return data.length > 0 ? JSON.parse(data) : [];
+};
+
+const writeCharacters = (data) => {
+    fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+};
+
+// --- APIエンドポイント ---
+
+// キャラクター一覧を取得
+app.get('/api/characters', (req, res) => {
+    res.json(readCharacters());
+});
+
+// 新しいキャラクターを追加
+app.post('/api/characters', (req, res) => {
+    const characters = readCharacters();
+    const newCharacter = {
+        id: Date.now().toString(),
+        ...req.body
+    };
+    characters.push(newCharacter);
+    writeCharacters(characters);
+    res.status(201).json(newCharacter);
+});
+
+// ▼▼▼ ここから追加 ▼▼▼
+// キャラクターを削除するAPI
+app.delete('/api/characters/:id', (req, res) => {
+    let characters = readCharacters();
+    const characterId = req.params.id;
+
+    // 削除対象のキャラクターを除外した新しい配列を作成
+    const newCharacters = characters.filter(char => char.id !== characterId);
+
+    // 配列の長さが変わったか（削除が成功したか）をチェック
+    if (characters.length === newCharacters.length) {
+        return res.status(404).json({ message: 'キャラクターが見つかりません' });
+    }
+
+    // 新しい配列をファイルに書き込む
+    writeCharacters(newCharacters);
+    res.status(200).json({ message: 'キャラクターが削除されました' });
+});
+// ▲▲▲ ここまで追加 ▲▲▲
+
+// --- 画像アップロード用API ---
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => cb(null, 'uploads/'),
+    filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
+});
+const upload = multer({ storage: storage });
+
+app.post('/upload', upload.single('imageFile'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ error: 'ファイルが選択されていません' });
+    }
+    res.json({ filePath: `/uploads/${req.file.filename}` });
+});
+
 app.listen(port, () => {
-  console.log(`サーバーがポート${port}で起動しました`);
+    console.log(`サーバーがポート${port}で起動しました`);
 });

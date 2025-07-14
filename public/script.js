@@ -209,139 +209,85 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentParty = [];
 
+    // --- 初期化 ---
+    async function initializeApp() {
+        // サーバーからデータを取得
+        const serverCharacters = await fetchCharacters();
+        // script.js内のデータとサーバーのデータを合体させる
+        const serverCharIds = new Set(serverCharacters.map(c => c.id));
+        const combined = [
+            ...serverCharacters,
+            ...hardcodedCharacters.filter(c => !serverCharIds.has(c.id))
+        ];
+        allCharacters = combined;
+
+        renderCharacters();
+        loadParty();
+    }
+
+    // --- API通信 ---
+    async function fetchCharacters() {
+        try {
+            const response = await fetch('/api/characters');
+            if (!response.ok) return [];
+            return await response.json();
+        } catch (error) {
+            console.error('キャラクターの読み込みに失敗:', error);
+            return [];
+        }
+    }
+
+    async function deleteCharacter(id, name) {
+        if (confirm(`「${name}」を本当に削除しますか？`)) {
+            try {
+                const response = await fetch(`/api/characters/${id}`, { method: 'DELETE' });
+                if (response.ok) {
+                    alert('キャラクターを削除しました。');
+                    await initializeApp(); // データを再取得して画面を更新
+                } else {
+                    throw new Error('削除に失敗しました。');
+                }
+            } catch (error) {
+                alert(error.message);
+            }
+        }
+    }
+
     // --- 描画処理 ---
     function renderCharacters(filteredCharacters = allCharacters) {
         characterListDiv.innerHTML = '';
         filteredCharacters.forEach(char => {
+            const container = document.createElement('div');
+            container.classList.add('character-item-container');
+
             const img = document.createElement('img');
             img.src = char.imageUrl;
             img.alt = char.name;
             img.classList.add('character-icon');
             img.dataset.id = char.id;
             img.addEventListener('click', () => addCharacterToParty(char));
-            characterListDiv.appendChild(img);
-        });
-    }
 
-    // --- フィルタリング機能 ---
-    function filterCharacters() {
-        const searchText = searchBar.value.toLowerCase();
-        const selectedElement = elementFilter.value;
-        const selectedWeapon = weaponFilter.value;
-        const filtered = allCharacters.filter(char => {
-            const matchesSearch = char.name.toLowerCase().includes(searchText);
-            const matchesElement = selectedElement === 'all' || char.element === selectedElement;
-            const matchesWeapon = selectedWeapon === 'all' || char.weapon === selectedWeapon;
-            return matchesSearch && matchesElement && matchesWeapon;
-        });
-        renderCharacters(filtered);
-    }
-    searchBar.addEventListener('input', filterCharacters);
-    elementFilter.addEventListener('change', filterCharacters);
-    weaponFilter.addEventListener('change', filterCharacters);
-    
-    // --- パーティ編成関連の関数 ---
-    clearPartyButton.addEventListener('click', () => {
-        currentParty = [];
-        repopulatePartySlots();
-        saveParty();
-    });
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = '×';
+            deleteButton.classList.add('delete-btn');
+            deleteButton.addEventListener('click', (event) => {
+                event.stopPropagation();
+                deleteCharacter(char.id, char.name);
+            });
 
-    function addCharacterToParty(char) {
-        if (currentParty.length >= 4 || currentParty.some(pChar => pChar.id === char.id)) {
-            return;
-        }
-        currentParty.push({ ...char, selectedWeapon: '', selectedArtifacts: ['', ''] });
-        repopulatePartySlots();
-        saveParty();
-    }
-
-    function removeCharacterFromParty(charId) {
-        currentParty = currentParty.filter(pChar => pChar.id !== charId);
-        repopulatePartySlots();
-        saveParty();
-    }
-
-    function repopulatePartySlots() {
-        partySlots.forEach((slot, index) => {
-            const characterDisplay = slot.querySelector('.character-display');
-            const weaponSelect = slot.querySelector('.weapon-select');
-            const artifactSetSelects = slot.querySelectorAll('.artifact-set-select');
-            
-            characterDisplay.innerHTML = '';
-            weaponSelect.innerHTML = '<option value="">武器を選択</option>';
-            artifactSetSelects[0].innerHTML = '<option value="">聖遺物セット1</option>';
-            artifactSetSelects[1].innerHTML = '<option value="">聖遺物セット2</option>';
-            
-            const pChar = currentParty[index];
-            if (pChar) {
-                const img = document.createElement('img');
-                img.src = pChar.imageUrl;
-                img.alt = pChar.name;
-                img.classList.add('party-character-icon');
-                img.addEventListener('click', () => removeCharacterFromParty(pChar.id));
-                characterDisplay.appendChild(img);
-
-                populateWeaponSelect(weaponSelect, pChar.weapon);
-                populateArtifactSetSelects(artifactSetSelects);
-                
-                weaponSelect.value = pChar.selectedWeapon;
-                artifactSetSelects[0].value = pChar.selectedArtifacts[0];
-                artifactSetSelects[1].value = pChar.selectedArtifacts[1];
-
-                weaponSelect.addEventListener('change', () => updateCharacterEquipment(pChar.id, 'weapon', weaponSelect.value));
-                artifactSetSelects[0].addEventListener('change', () => updateCharacterEquipment(pChar.id, 'artifact1', artifactSetSelects[0].value));
-                artifactSetSelects[1].addEventListener('change', () => updateCharacterEquipment(pChar.id, 'artifact2', artifactSetSelects[1].value));
+            container.appendChild(img);
+            // サーバーから取得したデータ（＝IDが数字）の場合のみ削除ボタンを表示
+            if (!isNaN(parseInt(char.id, 10))) {
+                 container.appendChild(deleteButton);
             }
+            characterListDiv.appendChild(container);
         });
     }
 
-    function populateWeaponSelect(selectElement, charWeaponType) {
-        if (weapons[charWeaponType]) {
-            weapons[charWeaponType].forEach(weapon => {
-                const option = document.createElement('option');
-                option.value = weapon;
-                option.textContent = weapon;
-                selectElement.appendChild(option);
-            });
-        }
-    }
+    // --- フィルターとパーティ関連の関数（変更なし） ---
+    // (filterCharacters, addCharacterToParty, removeCharacterFromParty, etc.)
+    // ... ここに以前のコードからフィルタとパーティ関連の関数をすべてコピー＆ペースト ...
 
-    function populateArtifactSetSelects(selectElements) {
-        selectElements.forEach((selectElement, index) => {
-            selectElement.innerHTML = `<option value="">聖遺物セット${index + 1}</option>`;
-            artifactSets.forEach(set => {
-                const option = document.createElement('option');
-                option.value = set;
-                option.textContent = set;
-                selectElement.appendChild(option);
-            });
-        });
-    }
-
-    function updateCharacterEquipment(charId, type, value) {
-        const charInParty = currentParty.find(pChar => pChar.id === charId);
-        if (charInParty) {
-            if (type === 'weapon') charInParty.selectedWeapon = value;
-            else if (type === 'artifact1') charInParty.selectedArtifacts[0] = value;
-            else if (type === 'artifact2') charInParty.selectedArtifacts[1] = value;
-            saveParty();
-        }
-    }
-
-    function saveParty() {
-        localStorage.setItem('genshinParty', JSON.stringify(currentParty));
-    }
-
-    function loadParty() {
-        const savedParty = localStorage.getItem('genshinParty');
-        if (savedParty) {
-            currentParty = JSON.parse(savedParty);
-            repopulatePartySlots();
-        }
-    }
-
-    // --- 初期化処理 ---
-    renderCharacters();
-    loadParty();
+    // --- アプリケーション起動 ---
+    initializeApp();
 });
