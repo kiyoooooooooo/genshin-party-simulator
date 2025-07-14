@@ -15,22 +15,18 @@ const DB_PATH = './character_db.json';
 
 const readCharacters = () => {
     if (!fs.existsSync(DB_PATH)) return [];
-    const data = fs.readFileSync(DB_PATH);
-    return data.length > 0 ? JSON.parse(data) : [];
+    const data = fs.readFileSync(DB_PATH, 'utf-8');
+    return data ? JSON.parse(data) : [];
 };
 
 const writeCharacters = (data) => {
     fs.writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
 };
 
-// --- APIエンドポイント ---
-
-// キャラクター一覧を取得
 app.get('/api/characters', (req, res) => {
     res.json(readCharacters());
 });
 
-// 新しいキャラクターを追加
 app.post('/api/characters', (req, res) => {
     const characters = readCharacters();
     const newCharacter = {
@@ -42,27 +38,17 @@ app.post('/api/characters', (req, res) => {
     res.status(201).json(newCharacter);
 });
 
-// ▼▼▼ ここから追加 ▼▼▼
-// キャラクターを削除するAPI
 app.delete('/api/characters/:id', (req, res) => {
     let characters = readCharacters();
     const characterId = req.params.id;
-
-    // 削除対象のキャラクターを除外した新しい配列を作成
     const newCharacters = characters.filter(char => char.id !== characterId);
-
-    // 配列の長さが変わったか（削除が成功したか）をチェック
     if (characters.length === newCharacters.length) {
         return res.status(404).json({ message: 'キャラクターが見つかりません' });
     }
-
-    // 新しい配列をファイルに書き込む
     writeCharacters(newCharacters);
     res.status(200).json({ message: 'キャラクターが削除されました' });
 });
-// ▲▲▲ ここまで追加 ▲▲▲
 
-// --- 画像アップロード用API ---
 const storage = multer.diskStorage({
     destination: (req, file, cb) => cb(null, 'uploads/'),
     filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))

@@ -1,0 +1,226 @@
+[
+  {
+    "id": "hutao",
+    "name": "胡桃",
+    "element": "炎",
+    "weapon": "長柄武器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Hutao.png"
+  },
+  {
+    "id": "bennett",
+    "name": "ベネット",
+    "element": "炎",
+    "weapon": "片手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Bennett.png"
+  },
+  {
+    "id": "xiangling",
+    "name": "香菱",
+    "element": "炎",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Xiangling.png"
+  },
+  {
+    "id": "diluc",
+    "name": "ディルック",
+    "element": "炎",
+    "weapon": "両手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Diluc.png"
+  },
+  {
+    "id": "dehya",
+    "name": "ディシア",
+    "element": "炎",
+    "weapon": "両手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Dehya.png"
+  },
+  {
+    "id": "chevreuse",
+    "name": "シュヴルーズ",
+    "element": "炎",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Chevreuse.png"
+  },
+  {
+    "id": "gaming",
+    "name": "嘉明",
+    "element": "炎",
+    "weapon": "両手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Gaming.png"
+  },
+  {
+    "id": "arlecchino",
+    "name": "アルレッキーノ",
+    "element": "炎",
+    "weapon": "長柄武器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Arlecchino.png"
+  },
+  {
+    "id": "thoma",
+    "name": "トーマ",
+    "element": "炎",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Tohma.png"
+  },
+  {
+    "id": "xinyan",
+    "name": "辛炎",
+    "element": "炎",
+    "weapon": "両手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Xinyan.png"
+  },
+  {
+    "id": "klee",
+    "name": "クレー",
+    "element": "炎",
+    "weapon": "法器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Klee.png"
+  },
+  {
+    "id": "lyney",
+    "name": "リネ",
+    "element": "炎",
+    "weapon": "弓",
+    "rarity": 5,
+    "imageUrl": "/uploads/1752496038055.png"
+  },
+  {
+    "id": "amber",
+    "name": "アンバー",
+    "element": "炎",
+    "weapon": "弓",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752496104429.png"
+  },
+  {
+    "id": "yoimiya",
+    "name": "宵宮",
+    "element": "炎",
+    "weapon": "弓",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Yoimiya.png"
+  },
+  {
+    "id": "Mavuika",
+    "name": "マーヴィカ",
+    "element": "炎",
+    "weapon": "両手剣",
+    "rarity": 5,
+    "imageUrl": "/uploads/1752496158070.png"
+  },
+  {
+    "id": "yelan",
+    "name": "夜蘭",
+    "element": "水",
+    "weapon": "弓",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Yelan.png"
+  },
+  {
+    "id": "xingqiu",
+    "name": "行秋",
+    "element": "水",
+    "weapon": "片手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Xingqiu.png"
+  },
+  {
+    "id": "furina",
+    "name": "フリーナ",
+    "element": "水",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Furina.png"
+  },
+  {
+    "id": "mualani",
+    "name": "ムアラニ",
+    "element": "水",
+    "weapon": "法器",
+    "rarity": 5,
+    "imageUrl": "/uploads/1752496239510.png"
+  },
+  {
+    "id": "zhongli",
+    "name": "鍾離",
+    "element": "岩",
+    "weapon": "長柄武器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Zhongli.png"
+  },
+  {
+    "id": "noelle",
+    "name": "ノエル",
+    "element": "岩",
+    "weapon": "両手剣",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752496383387.png"
+  },
+  {
+    "id": "kazuha",
+    "name": "楓原万葉",
+    "element": "風",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Kazuha.png"
+  },
+  {
+    "id": "fischl",
+    "name": "フィッシュル",
+    "element": "雷",
+    "weapon": "弓",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Fischl.png"
+  },
+  {
+    "id": "raiden",
+    "name": "雷電将軍",
+    "element": "雷",
+    "weapon": "長柄武器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Shougun.png"
+  },
+  {
+    "id": "ganyu",
+    "name": "甘雨",
+    "element": "氷",
+    "weapon": "弓",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Ganyu.png"
+  },
+  {
+    "id": "ayaka",
+    "name": "神里綾華",
+    "element": "氷",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Ayaka.png"
+  },
+  {
+    "id": "nahida",
+    "name": "ナヒーダ",
+    "element": "草",
+    "weapon": "法器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Nahida.png"
+  },
+  {
+    "id": "traveler",
+    "name": "旅人",
+    "element": "複数",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_PlayerBoy.png"
+  }
+]
