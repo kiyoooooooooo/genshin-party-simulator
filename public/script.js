@@ -42,27 +42,30 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 描画処理
+    // --- 描画処理 ---
     function renderCharacters(filteredCharacters = allCharacters) {
         characterListDiv.innerHTML = '';
         filteredCharacters.forEach(char => {
             const container = document.createElement('div');
             container.classList.add('character-item-container');
+
             const img = document.createElement('img');
             img.src = char.imageUrl;
-            img.alt = char.name;
-            img.classList.add('character-icon');
-            img.dataset.id = char.id;
-            img.addEventListener('click', () => addCharacterToParty(char));
+            // ... (imgの他の設定) ...
+
             const deleteButton = document.createElement('button');
-            deleteButton.textContent = '×';
-            deleteButton.classList.add('delete-btn');
-            deleteButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-                deleteCharacter(char.id, char.name);
-            });
+            // ... (deleteButtonの設定) ...
+            
             container.appendChild(img);
-            container.appendChild(deleteButton);
+
+            // ▼▼▼ この部分が重要です ▼▼▼
+            // キャラクターのIDが数字に変換できるかチェック
+            if (!isNaN(parseInt(char.id, 10))) {
+                // 数字の場合（＝サイトから追加されたキャラ）だけ削除ボタンを追加
+                container.appendChild(deleteButton);
+            }
+            // ▲▲▲ ここまで ▲▲▲
+
             characterListDiv.appendChild(container);
         });
     }
