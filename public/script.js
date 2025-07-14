@@ -186,45 +186,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const artifactSets = [
        'なし',
-        '深廊の終曲',
-        '長き夜の誓い',
-        '灰燼の都に立つ英雄の絵巻',
-        '黒曜の秘典',
-        '遂げられなかった想い',
-        '諧律奇想の断章',
-        '残響の森で囁かれる夜話',
-        '在りし日の歌',
-        '黄金の劇団',
-        'ファントムハンター',
-        '花海甘露の光',
-        '水仙の夢',
-        '楽園の絶花',
-        '砂上の楼閣の史話',
-        '金メッキの夢',
-        '深林の記憶',
-        '来歆の余響',
-        '辰砂往生録',
-        '海染硨磲',
-        '華館夢醒形骸記',
-        '追憶のしめ縄',
-        '絶縁の旗印',
-        '蒼白の炎',
-        '千岩牢固',
-        '氷風を彷徨う勇士',
-        '沈淪の心',
-        '逆飛びの流星',
-        '悠久の磐岩',
-        '血染めの騎士道',
-        '旧貴族のしつけ',
-        '燃え盛る炎の魔女',
-        '雷のような怒り',
-        '翠緑の影',
-        '剣闘士のフィナーレ',
-        '愛される少女',
-        '烈火を渡る賢者',
-        '雷を鎮める尊者',
-        '大地を流浪する楽団',
-        '教官'
+        '深廊の終曲','長き夜の誓い','灰燼の都に立つ英雄の絵巻',
+        '黒曜の秘典','遂げられなかった想い','諧律奇想の断章',
+        '残響の森で囁かれる夜話','在りし日の歌','黄金の劇団',
+        'ファントムハンター','花海甘露の光','水仙の夢',
+        '楽園の絶花','砂上の楼閣の史話','金メッキの夢',
+        '深林の記憶','来歆の余響','辰砂往生録','海染硨磲',
+        '華館夢醒形骸記','追憶のしめ縄','絶縁の旗印',
+        '蒼白の炎','千岩牢固','氷風を彷徨う勇士','沈淪の心',
+        '逆飛びの流星','悠久の磐岩','血染めの騎士道',
+        '旧貴族のしつけ','燃え盛る炎の魔女','雷のような怒り',
+        '翠緑の影','剣闘士のフィナーレ','愛される少女',
+        '烈火を渡る賢者','雷を鎮める尊者','大地を流浪する楽団','教官'
     ];
 
     const characterListDiv = document.getElementById('character-list');
@@ -482,4 +455,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // 初期表示
     renderCharacters();
     loadParty();
+});
+
+const imageUploader = document.getElementById('imageUploader');
+const uploadButton = document.getElementById('uploadButton');
+const uploadStatus = document.getElementById('uploadStatus');
+
+uploadButton.addEventListener('click', async () => {
+    const file = imageUploader.files[0];
+    if (!file) {
+        uploadStatus.textContent = 'ファイルが選択されていません。';
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('imageFile', file);
+
+    try {
+        const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            uploadStatus.textContent = `アップロード成功！ パス: ${result.filePath}`;
+            // このパスを使って新しいキャラクターをリストに追加できます
+            console.log('新しい画像のパス:', result.filePath);
+        } else {
+            throw new Error(result.error || 'アップロードに失敗しました。');
+        }
+    } catch (error) {
+        uploadStatus.textContent = error.message;
+    }
 });
