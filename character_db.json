@@ -144,12 +144,92 @@
     "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Furina.png"
   },
   {
+    "id": "mona",
+    "name": "モナ",
+    "element": "水",
+    "weapon": "法器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Mona.png"
+  },
+  {
+    "id": "nilou",
+    "name": "ニィロウ",
+    "element": "水",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Nilou.png"
+  },
+  {
+    "id": "neuvillette",
+    "name": "ヌヴィレット",
+    "element": "水",
+    "weapon": "法器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Neuvillette.png"
+  },
+  {
+    "id": "sigewinne",
+    "name": "シグウィン",
+    "element": "水",
+    "weapon": "弓",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Sigewinne.png"
+  },
+  {
+    "id": "kokomi",
+    "name": "珊瑚宮心海",
+    "element": "水",
+    "weapon": "法器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Kokomi.png"
+  },
+  {
+    "id": "child_tartaglia",
+    "name": "タルタリヤ",
+    "element": "水",
+    "weapon": "弓",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Tartaglia.png"
+  },
+  {
+    "id": "barbara",
+    "name": "バーバラ",
+    "element": "水",
+    "weapon": "法器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Barbara.png"
+  },
+  {
+    "id": "ayato",
+    "name": "神里綾人",
+    "element": "水",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Ayato.png"
+  },
+  {
+    "id": "candace",
+    "name": "キャンディス",
+    "element": "水",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Candace.png"
+  },
+  {
     "id": "mualani",
     "name": "ムアラニ",
     "element": "水",
     "weapon": "法器",
     "rarity": 5,
     "imageUrl": "/uploads/1752496239510.png"
+  },
+  {
+    "id": "dahlia",
+    "name": "ダリア",
+    "element": "水",
+    "weapon": "片手剣",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752496306518.png"
   },
   {
     "id": "zhongli",
@@ -160,6 +240,46 @@
     "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Zhongli.png"
   },
   {
+    "id": "albedo",
+    "name": "アルベド",
+    "element": "岩",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Albedo.png"
+  },
+  {
+    "id": "chiori",
+    "name": "千織",
+    "element": "岩",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Chiori.png"
+  },
+  {
+    "id": "gorou",
+    "name": "ゴロー",
+    "element": "岩",
+    "weapon": "弓",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Gorou.png"
+  },
+  {
+    "id": "itto",
+    "name": "荒瀧一斗",
+    "element": "岩",
+    "weapon": "両手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Itto.png"
+  },
+  {
+    "id": "yunjin",
+    "name": "雲菫",
+    "element": "岩",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Yunjin.png"
+  },
+  {
     "id": "noelle",
     "name": "ノエル",
     "element": "岩",
@@ -168,12 +288,156 @@
     "imageUrl": "/uploads/1752496383387.png"
   },
   {
+    "id": "ningguang",
+    "name": "凝光",
+    "element": "岩",
+    "weapon": "法器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Ningguang.png"
+  },
+  {
+    "id": "navia",
+    "name": "ナヴィア",
+    "element": "岩",
+    "weapon": "両手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Navia.png"
+  },
+  {
+    "id": "kachina",
+    "name": "カチーナ",
+    "element": "岩",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752496440588.png"
+  },
+  {
+    "id": "xilonen",
+    "name": "シロネン",
+    "element": "岩",
+    "weapon": "片手剣",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752496504242.png"
+  },
+  {
     "id": "kazuha",
     "name": "楓原万葉",
     "element": "風",
     "weapon": "片手剣",
     "rarity": 5,
     "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Kazuha.png"
+  },
+  {
+    "id": "wanderer",
+    "name": "放浪者",
+    "element": "風",
+    "weapon": "法器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Wanderer.png"
+  },
+  {
+    "id": "xianyun",
+    "name": "閑雲",
+    "element": "風",
+    "weapon": "法器",
+    "rarity": 5,
+    "imageUrl": "/uploads/1752496573731.png"
+  },
+  {
+    "id": "jean",
+    "name": "ジン",
+    "element": "風",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "/uploads/1752496631664.png"
+  },
+  {
+    "id": "faruzan",
+    "name": "ファルザン",
+    "element": "風",
+    "weapon": "弓",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Faruzan.png"
+  },
+  {
+    "id": "sayu",
+    "name": "早柚",
+    "element": "風",
+    "weapon": "両手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Sayu.png"
+  },
+  {
+    "id": "sucrose",
+    "name": "スクロース",
+    "element": "風",
+    "weapon": "法器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Sucrose.png"
+  },
+  {
+    "id": "venti",
+    "name": "ウェンティ",
+    "element": "風",
+    "weapon": "弓",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Venti.png"
+  },
+  {
+    "id": "shikanoin_heizou",
+    "name": "鹿野院平蔵",
+    "element": "風",
+    "weapon": "法器",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752496692529.png"
+  },
+  {
+    "id": "lynette",
+    "name": "リネット",
+    "element": "風",
+    "weapon": "片手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Linette.png"
+  },
+  {
+    "id": "xiao",
+    "name": "魈",
+    "element": "風",
+    "weapon": "長柄武器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Xiao.png"
+  },
+  {
+    "id": "chasca",
+    "name": "チャスカ",
+    "element": "風",
+    "weapon": "弓",
+    "rarity": 5,
+    "imageUrl": "/uploads/1752496760277.png"
+  },
+  {
+    "id": "yumemitsuki_mizuki",
+    "name": "夢見月瑞希",
+    "element": "風",
+    "weapon": "法器",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752496835372.png"
+  },
+  {
+    "id": "lanyan",
+    "name": "藍魂",
+    "element": "風",
+    "weapon": "法器",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752496900446.png"
+  },
+  {
+    "id": "ifa",
+    "name": "イファ",
+    "element": "風",
+    "weapon": "法器",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752496958076.png"
   },
   {
     "id": "fischl",
@@ -192,6 +456,118 @@
     "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Shougun.png"
   },
   {
+    "id": "keqing",
+    "name": "刻晴",
+    "element": "雷",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Keqing.png"
+  },
+  {
+    "id": "cyno",
+    "name": "セノ",
+    "element": "雷",
+    "weapon": "長柄武器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Cyno.png"
+  },
+  {
+    "id": "kuki",
+    "name": "久岐忍",
+    "element": "雷",
+    "weapon": "片手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Shinobu.png"
+  },
+  {
+    "id": "dori",
+    "name": "ドリー",
+    "element": "雷",
+    "weapon": "両手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Dori.png"
+  },
+  {
+    "id": "clorinde",
+    "name": "クロリンデ",
+    "element": "雷",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Clorinde.png"
+  },
+  {
+    "id": "sethos",
+    "name": "セトス",
+    "element": "雷",
+    "weapon": "弓",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Sethos.png"
+  },
+  {
+    "id": "yae_miko",
+    "name": "八重神子",
+    "element": "雷",
+    "weapon": "法器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Yae.png"
+  },
+  {
+    "id": "kujou_sara",
+    "name": "九条裟羅",
+    "element": "雷",
+    "weapon": "弓",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Sara.png"
+  },
+  {
+    "id": "razor",
+    "name": "レザー",
+    "element": "雷",
+    "weapon": "両手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Razor.png"
+  },
+  {
+    "id": "lisa",
+    "name": "リサ",
+    "element": "雷",
+    "weapon": "法器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Lisa.png"
+  },
+  {
+    "id": "beidou",
+    "name": "北斗",
+    "element": "雷",
+    "weapon": "両手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Beidou.png"
+  },
+  {
+    "id": "iansan",
+    "name": "イアンサ",
+    "element": "雷",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752497038755.png"
+  },
+  {
+    "id": "varesa",
+    "name": "ヴァレサ",
+    "element": "雷",
+    "weapon": "法器",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752497093365.png"
+  },
+  {
+    "id": "ororon",
+    "name": "オロルン",
+    "element": "雷",
+    "weapon": "弓",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752497145033.png"
+  },
+  {
     "id": "ganyu",
     "name": "甘雨",
     "element": "氷",
@@ -208,12 +584,212 @@
     "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Ayaka.png"
   },
   {
+    "id": "qiqi",
+    "name": "七七",
+    "element": "氷",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Qiqi.png"
+  },
+  {
+    "id": "wriothesley",
+    "name": "リオセスリ",
+    "element": "氷",
+    "weapon": "法器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Wriothesley.png"
+  },
+  {
+    "id": "layla",
+    "name": "レイラ",
+    "element": "氷",
+    "weapon": "片手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Layla.png"
+  },
+  {
+    "id": "shenhe",
+    "name": "申鶴",
+    "element": "氷",
+    "weapon": "長柄武器",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Shenhe.png"
+  },
+  {
+    "id": "aloy",
+    "name": "アーロイ",
+    "element": "氷",
+    "weapon": "弓",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Aloy.png"
+  },
+  {
+    "id": "chongyun",
+    "name": "重雲",
+    "element": "氷",
+    "weapon": "両手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Chongyun.png"
+  },
+  {
+    "id": "kaeya",
+    "name": "ガイア",
+    "element": "氷",
+    "weapon": "片手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Kaeya.png"
+  },
+  {
+    "id": "diona",
+    "name": "ディオナ",
+    "element": "氷",
+    "weapon": "弓",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Diona.png"
+  },
+  {
+    "id": "rosaria",
+    "name": "ロサリア",
+    "element": "氷",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Rosaria.png"
+  },
+  {
+    "id": "eula",
+    "name": "エウルア",
+    "element": "氷",
+    "weapon": "両手剣",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Eula.png"
+  },
+  {
+    "id": "freminet",
+    "name": "フレミネ",
+    "element": "氷",
+    "weapon": "両手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Freminet.png"
+  },
+  {
+    "id": "charlotte",
+    "name": "シャルロット",
+    "element": "氷",
+    "weapon": "法器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Charlotte.png"
+  },
+  {
+    "id": "mika",
+    "name": "ミカ",
+    "element": "氷",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Mika.png"
+  },
+  {
+    "id": "skirk",
+    "name": "スカーク",
+    "element": "氷",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "/uploads/1752497211180.png"
+  },
+  {
+    "id": "escoffier",
+    "name": "スコフィエ",
+    "element": "氷",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752497265649.png"
+  },
+  {
+    "id": "Citlali",
+    "name": "シトラリ",
+    "element": "氷",
+    "weapon": "法器",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752497330547.png"
+  },
+  {
     "id": "nahida",
     "name": "ナヒーダ",
     "element": "草",
     "weapon": "法器",
     "rarity": 5,
     "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Nahida.png"
+  },
+  {
+    "id": "alhaitham",
+    "name": "アルハイゼン",
+    "element": "草",
+    "weapon": "片手剣",
+    "rarity": 5,
+    "imageUrl": "/uploads/1752495562675.png"
+  },
+  {
+    "id": "baizhu",
+    "name": "白朮",
+    "element": "草",
+    "weapon": "法器",
+    "rarity": 5,
+    "imageUrl": "/uploads/1752495790027.png"
+  },
+  {
+    "id": "kirara",
+    "name": "綺良々",
+    "element": "草",
+    "weapon": "片手剣",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752495892579.png"
+  },
+  {
+    "id": "collei",
+    "name": "コレイ",
+    "element": "草",
+    "weapon": "弓",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Collei.png"
+  },
+  {
+    "id": "yaoyao",
+    "name": "ヨォーヨ",
+    "element": "草",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Yaoyao.png"
+  },
+  {
+    "id": "kaveh",
+    "name": "カーヴェ",
+    "element": "草",
+    "weapon": "両手剣",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Kaveh.png"
+  },
+  {
+    "id": "emilie",
+    "name": "エミリエ",
+    "element": "草",
+    "weapon": "長柄武器",
+    "rarity": 4,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Emilie.png"
+  },
+  {
+    "id": "tighnari",
+    "name": "ティナリ",
+    "element": "草",
+    "weapon": "弓",
+    "rarity": 5,
+    "imageUrl": "https://enka.network/ui/UI_AvatarIcon_Tighnari.png"
+  },
+  {
+    "id": "kinich",
+    "name": "キィニチ",
+    "element": "草",
+    "weapon": "両手剣",
+    "rarity": 4,
+    "imageUrl": "/uploads/1752495955900.png"
   },
   {
     "id": "traveler",
