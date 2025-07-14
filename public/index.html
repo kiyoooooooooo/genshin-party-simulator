@@ -90,6 +90,47 @@
             <button id="clear-party">パーティをクリア</button>
         </section>
 
+        <section id="character-management-section">
+            <h2>キャラクター管理</h2>
+
+            <div id="upload-section">
+                <h3>1. 画像をアップロード</h3>
+                <input type="file" id="imageUploader" accept="image/png, image/jpeg">
+                <button type="button" id="uploadButton">アップロード</button>
+                <div id="uploadStatus"></div>
+            </div>
+
+            <form id="add-character-form">
+                <h3>2. キャラクター情報を入力して追加</h3>
+                <input type="text" id="char-name" placeholder="名前" required>
+                <select id="char-element" required>
+                    <option value="">元素を選択</option>
+                    <option value="炎">炎</option>
+                    <option value="水">水</option>
+                    <option value="氷">氷</option>
+                    <option value="雷">雷</option>
+                    <option value="風">風</option>
+                    <option value="岩">岩</option>
+                    <option value="草">草</option>
+                </select>
+                <select id="char-weapon" required>
+                    <option value="">武器種を選択</option>
+                    <option value="片手剣">片手剣</option>
+                    <option value="両手剣">両手剣</option>
+                    <option value="長柄武器">長柄武器</option>
+                    <option value="弓">弓</option>
+                    <option value="法器">法器</option>
+                </select>
+                <select id="char-rarity" required>
+                    <option value="">レアリティ</option>
+                    <option value="5">★5</option>
+                    <option value="4">★4</option>
+                </select>
+                <input type="hidden" id="char-image-url">
+                <button type="submit">キャラクターを追加</button>
+            </form>
+        </section>
+
         <section id="character-selection-section">
             <h2>キャラクター選択</h2>
             <div id="filters">
@@ -112,13 +153,6 @@
                     <option value="弓">弓</option>
                     <option value="法器">法器</option>
                 </select>
-            </div>
-            
-            <div id="upload-section">
-                <h3>新規キャラクター画像アップロード</h3>
-                <input type="file" id="imageUploader" accept="image/png, image/jpeg">
-                <button id="uploadButton">アップロード</button>
-                <div id="uploadStatus"></div>
             </div>
             <div id="character-list">
                 </div>
