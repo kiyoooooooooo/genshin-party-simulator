@@ -5,11 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>kiyosystem</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .background-uploader {
+            margin-top: 1em;
+        }
+
+        #party-section {
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
 </head>
 <body>
     <header>
         <h1>kiyosystem</h1>
     </header>
+
     <main>
         <section id="party-section">
             <h2>現在のパーティ</h2>
@@ -87,12 +98,17 @@
                     </div>
                 </div>
             </div>
+
             <button id="clear-party">パーティをクリア</button>
+
+            <div class="background-uploader">
+                <label for="bg-uploader">パーティ欄の背景を変更:</label>
+                <input type="file" id="bg-uploader" accept="image/*">
+            </div>
         </section>
 
         <section id="character-management-section">
             <h2>キャラクター管理</h2>
-
             <div id="upload-section">
                 <h3>1. 画像をアップロード</h3>
                 <input type="file" id="imageUploader" accept="image/png, image/jpeg">
@@ -154,10 +170,23 @@
                     <option value="法器">法器</option>
                 </select>
             </div>
-            <div id="character-list">
-                </div>
+            <div id="character-list"></div>
         </section>
     </main>
+
     <script src="script.js"></script>
+    <script>
+        document.getElementById("bg-uploader").addEventListener("change", function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const bgUrl = e.target.result;
+                document.getElementById("party-section").style.backgroundImage = `url(${bgUrl})`;
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
 </body>
 </html>

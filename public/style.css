@@ -248,4 +248,11 @@ section {
     main {
         flex-direction: column;
     }
+
+    #party-slots {
+        /* flex-direction: column; を削除またはコメントアウト */
+        justify-content: center; /* 小さい画面では中央寄せにする */
+    }
+
+    /* ... */
 }
